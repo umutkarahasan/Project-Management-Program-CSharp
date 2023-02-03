@@ -1,0 +1,15 @@
+C:\Users\DELL\OneDrive\Masaüstü\umut\visual-2022\projeeee\projeeee\bin\Debug\projeeee.exe.config
+C:\Users\DELL\OneDrive\Masaüstü\umut\visual-2022\projeeee\projeeee\bin\Debug\projeeee.exe
+C:\Users\DELL\OneDrive\Masaüstü\umut\visual-2022\projeeee\projeeee\bin\Debug\ReaLTaiizor.dll
+C:\Users\DELL\OneDrive\Masaüstü\umut\visual-2022\projeeee\projeeee\bin\Debug\ReaLTaiizor.xml
+C:\Users\DELL\OneDrive\Masaüstü\umut\visual-2022\projeeee\projeeee\obj\Debug\projeeee.csproj.SuggestedBindingRedirects.cache
+C:\Users\DELL\OneDrive\Masaüstü\umut\visual-2022\projeeee\projeeee\obj\Debug\projeeee.anasayfa.resources
+C:\Users\DELL\OneDrive\Masaüstü\umut\visual-2022\projeeee\projeeee\obj\Debug\projeeee.Giriş.resources
+C:\Users\DELL\OneDrive\Masaüstü\umut\visual-2022\projeeee\projeeee\obj\Debug\projeeee.Properties.Resources.resources
+C:\Users\DELL\OneDrive\Masaüstü\umut\visual-2022\projeeee\projeeee\obj\Debug\projeeee.csproj.GenerateResource.cache
+C:\Users\DELL\OneDrive\Masaüstü\umut\visual-2022\projeeee\projeeee\obj\Debug\projeeee.csproj.CoreCompileInputs.cache
+C:\Users\DELL\OneDrive\Masaüstü\umut\visual-2022\projeeee\projeeee\obj\Debug\projeeee.csproj.CopyComplete
+C:\Users\DELL\OneDrive\Masaüstü\umut\visual-2022\projeeee\projeeee\obj\Debug\projeeee.exe
+C:\Users\DELL\OneDrive\Masaüstü\umut\visual-2022\projeeee\projeeee\obj\Debug\projeeee.pdb
+C:\Users\DELL\OneDrive\Masaüstü\umut\visual-2022\projeeee\projeeee\bin\Debug\projeeee.pdb
+C:\Users\DELL\OneDrive\Masaüstü\umut\visual-2022\projeeee\projeeee\obj\Debug\projeeee.csproj.AssemblyReference.cache
