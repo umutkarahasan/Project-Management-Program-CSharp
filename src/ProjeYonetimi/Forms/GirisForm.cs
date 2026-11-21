@@ -11,18 +11,18 @@ namespace ProjeYonetimi.Forms
         public GirisForm()
         {
             InitializeComponent();
-            txtSifre.KeyDown += Alan_KeyDown;
-            txtKullaniciAdi.KeyDown += Alan_KeyDown;
         }
 
-        // Enter tuşu ile giriş yapılabilsin
-        private void Alan_KeyDown(object sender, KeyEventArgs e)
+        // Enter tuşu ile giriş yapılabilsin. ReaLTaiizor metin kutuları KeyDown olayını
+        // forma iletmediği için tuş, form seviyesinde yakalanır.
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (keyData == Keys.Enter)
             {
-                e.SuppressKeyPress = true;
                 GirisYap();
+                return true;
             }
+            return base.ProcessCmdKey(ref msg, keyData);
         }
 
         private void btnGiris_Click(object sender, EventArgs e)

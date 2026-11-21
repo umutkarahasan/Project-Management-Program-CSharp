@@ -28,6 +28,7 @@ namespace ProjeYonetimi.Forms
         public AnaForm()
         {
             InitializeComponent();
+            ArayuzuHazirla();
         }
 
         private void AnaForm_Load(object sender, EventArgs e)
@@ -77,18 +78,10 @@ namespace ProjeYonetimi.Forms
             chartButce.DataSource = butceler;
             chartButce.Series[0].XValueMember = "ProjeAdi";
             chartButce.Series[0].YValueMembers = "butce";
-            chartButce.Series[0].ChartType = SeriesChartType.Pie;
             chartButce.Series[0].IsValueShownAsLabel = false;
             chartButce.DataBind();
 
-            int projeSayisi = Convert.ToInt32(Deger("SELECT COUNT(*) FROM proje"));
-            int gorevSayisi = Convert.ToInt32(Deger("SELECT COUNT(*) FROM gorev"));
-            int calisanSayisi = Convert.ToInt32(Deger("SELECT COUNT(*) FROM calisan"));
-            decimal toplamButce = Convert.ToDecimal(Deger("SELECT ISNULL(SUM(butce), 0) FROM proje"));
-
-            lblOzet.Text = string.Format(Tr,
-                "{0} proje  •  {1} görev  •  {2} çalışan  •  Toplam bütçe: {3:C2}",
-                projeSayisi, gorevSayisi, calisanSayisi, toplamButce);
+            OzetKartlariniYukle();
         }
 
         #endregion
@@ -118,7 +111,9 @@ namespace ProjeYonetimi.Forms
         #region Projeler
 
         private const string ProjeSorgusu =
-            "SELECT p.ProjeAdi AS [Proje Adı], p.Sahip, o.oncelik AS [Öncelik], d.durum AS [Durum], " +
+            "SELECT p.projeid AS [_id], p.ProjeAdi AS [Proje Adı], p.Sahip, o.oncelik AS [Öncelik], d.durum AS [Durum], " +
+            "       (SELECT ISNULL(100 * SUM(CASE WHEN gd.durum = N'Tamamlanmış' THEN 1 ELSE 0 END) / NULLIF(COUNT(*), 0), 0) " +
+            "        FROM gorev g2 JOIN durum gd ON gd.durum_id = g2.durum_id WHERE g2.projeid = p.projeid) AS [İlerleme], " +
             "       p.pbaslangic AS [Başlangıç], p.pbitis AS [Bitiş], p.butce AS [Bütçe] " +
             "FROM proje p " +
             "JOIN oncelik o ON o.oncelik_id = p.oncelik_id " +
@@ -245,7 +240,7 @@ namespace ProjeYonetimi.Forms
         private void CalisanlariYukle()
         {
             Izgara(dgvCalisanlar, Tablo(
-                "SELECT c.calisanadi AS [Adı], c.calisansoyadi AS [Soyadı], c.calisaneposta AS [E-Posta], " +
+                "SELECT c.calisanid AS [_id], c.calisanadi AS [Adı], c.calisansoyadi AS [Soyadı], c.calisaneposta AS [E-Posta], " +
                 "       c.calisantel AS [Telefon], u.unvan_adi AS [Unvan], t.tecrube AS [İş Deneyimi] " +
                 "FROM calisan c " +
                 "LEFT JOIN unvan u ON u.unvan_id = c.unvan_id " +
@@ -366,7 +361,8 @@ namespace ProjeYonetimi.Forms
         #region Görevler ve kategoriler
 
         private const string GorevSorgusu =
-            "SELECT p.ProjeAdi AS [Proje], g.gorevadi AS [Görev], c.calisanadi + ' ' + c.calisansoyadi AS [Atanan], " +
+            "SELECT g.gorevid AS [_id], p.ProjeAdi AS [Proje], g.gorevadi AS [Görev], " +
+            "       ISNULL(c.calisanadi + ' ' + c.calisansoyadi, N'(atanmamış)') AS [Atanan], " +
             "       g.gbaslangic AS [Başlangıç], g.gbitis AS [Bitiş], o.oncelik AS [Öncelik], d.durum AS [Durum], " +
             "       g.gmaaliyet AS [Maliyet] " +
             "FROM gorev g " +
@@ -500,7 +496,7 @@ namespace ProjeYonetimi.Forms
             return cb.SelectedValue is int id ? id : (int?)null;
         }
 
-        private static void Izgara(DataGridView dgv, DataTable veri)
+        private void Izgara(DataGridView dgv, DataTable veri)
         {
             dgv.DataSource = veri;
             dgv.ReadOnly = true;
@@ -524,6 +520,8 @@ namespace ProjeYonetimi.Forms
                     sutun.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 }
             }
+
+            IzgarayiBicimlendir(dgv);
         }
 
         private static DataGridViewTextBoxColumn MetinSutunu(string alan, string baslik, string bicim = null)

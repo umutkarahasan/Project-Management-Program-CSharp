@@ -264,7 +264,7 @@ namespace ProjeYonetimi.Forms
             // 
             this.takvim.BackColor = System.Drawing.Color.White;
             this.takvim.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(223)))), ((int)(((byte)(230)))));
-            this.takvim.Date = new System.DateTime(2022, 4, 1, 0, 0, 0, 0);
+            this.takvim.Date = System.DateTime.Today;
             this.takvim.DayNames = "MTWTFSS";
             this.takvim.DaysTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(98)))), ((int)(((byte)(102)))));
             this.takvim.DayTextColorA = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
@@ -1270,9 +1270,9 @@ namespace ProjeYonetimi.Forms
             // tcGorevler
             // 
             this.tcGorevler.Alignment = System.Windows.Forms.TabAlignment.Left;
-            this.tcGorevler.Controls.Add(this.tpKategoriler);
             this.tcGorevler.Controls.Add(this.tpGorevListesi);
             this.tcGorevler.Controls.Add(this.tpGorevEkle);
+            this.tcGorevler.Controls.Add(this.tpKategoriler);
             this.tcGorevler.ItemSize = new System.Drawing.Size(30, 115);
             this.tcGorevler.Location = new System.Drawing.Point(5, 3);
             this.tcGorevler.Multiline = true;
@@ -1297,7 +1297,7 @@ namespace ProjeYonetimi.Forms
             this.tpKategoriler.Padding = new System.Windows.Forms.Padding(3);
             this.tpKategoriler.Size = new System.Drawing.Size(873, 455);
             this.tpKategoriler.TabIndex = 3;
-            this.tpKategoriler.Text = "tpKategoriler";
+            this.tpKategoriler.Text = "Kategoriler";
             // 
             // lblKategoriEkle
             // 
@@ -1319,10 +1319,10 @@ namespace ProjeYonetimi.Forms
             this.btnKategoriEkle.Customization = "7e3t//Ly8v/r6+v/5ubm/+vr6//f39//p6en/zw8PP8UFBT/gICA/w==";
             this.btnKategoriEkle.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnKategoriEkle.Image = null;
-            this.btnKategoriEkle.Location = new System.Drawing.Point(403, 144);
+            this.btnKategoriEkle.Location = new System.Drawing.Point(403, 132);
             this.btnKategoriEkle.Name = "btnKategoriEkle";
             this.btnKategoriEkle.NoRounding = false;
-            this.btnKategoriEkle.Size = new System.Drawing.Size(320, 154);
+            this.btnKategoriEkle.Size = new System.Drawing.Size(320, 40);
             this.btnKategoriEkle.TabIndex = 8;
             this.btnKategoriEkle.Text = "EKLE";
             this.btnKategoriEkle.Transparent = false;
@@ -1714,7 +1714,8 @@ namespace ProjeYonetimi.Forms
             // 
             this.lblSaat.BackColor = System.Drawing.Color.Transparent;
             this.lblSaat.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblSaat.Location = new System.Drawing.Point(5, 29);
+            this.lblSaat.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            this.lblSaat.Location = new System.Drawing.Point(900, 62);
             this.lblSaat.Name = "lblSaat";
             this.lblSaat.Size = new System.Drawing.Size(96, 16);
             this.lblSaat.TabIndex = 1;

@@ -9,7 +9,7 @@
     <Product>Proje Yönetimi</Product>
     <Description>SQL Server tabanlı proje, görev ve çalışan yönetimi uygulaması</Description>
     <Authors>Umut Karahasan</Authors>
-    <Version>2.0.0</Version>
+    <Version>2.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -30,6 +30,7 @@
   <ItemGroup>
     <Compile Update="Forms\AnaForm.cs" SubType="Form" />
     <Compile Update="Forms\GirisForm.cs" SubType="Form" />
+    <Compile Update="Forms\AnaForm.Gelistirmeler.cs" DependentUpon="AnaForm.cs" />
   </ItemGroup>
 
 </Project>
