@@ -81,4 +81,4 @@ erDiagram
 
 ## Lisans
 
-[MIT](LICENSE)
+[CC0 1.0](LICENSE) — serbestçe kullanılabilir.
